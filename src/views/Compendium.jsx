@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { avatarApiFetch } from '../services/fetch-utils';
-
+import CharacterCard from '../components/CharacterCard';
 
 export default function Compendium() {
   const [characters, setCharacters] = useState([]);
@@ -25,6 +25,7 @@ export default function Compendium() {
   useEffect(() => {
     const getCharacters = async () => {
       const characterList = await avatarApiFetch();
+      console.log(characterList);
       setCharacters(characterList);
     }
 
@@ -35,8 +36,17 @@ export default function Compendium() {
     <>
       <h1>Characters from Avatar!</h1>
       <>
-        <input placeholder='Find a Character' value={search} />
+        <input placeholder='Find a Character' value={search} onChange={handleSearch} />
       </>
+      <div>
+        {characterList.map((character) => {
+          return (
+            <div key={character.id}>
+            <CharacterCard name={character.name} photo={character.photoUrl} />
+            </div>
+          )
+        })}
+      </div>
     </>
   )
 }
