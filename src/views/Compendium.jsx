@@ -7,6 +7,21 @@ export default function Compendium() {
   const [search, setSearch] = useState('');
   const [results, setResults] = useState([]);
 
+  const isSearching = !!search.length;
+  const noResults = isSearching && !results.length;
+  const characterList = isSearching ? results : characters;
+
+  function handleSearch(event) {
+    setSearch(event.target.value);
+
+    const filteredCharacters = characters.filter((character) =>
+      character.name
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase().trim())
+    );
+    setResults(filteredCharacters);
+  };
+
   useEffect(() => {
     const getCharacters = async () => {
       const characterList = await avatarApiFetch();
