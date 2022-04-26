@@ -1,8 +1,9 @@
 export async function avatarApiFetch() {
   const res = await fetch('https://last-airbender-api.herokuapp.com/api/v1/characters');
-  const data = res.json();
-  const name = data.name;
-  const photo = data.photoUrl;
+  const data = await res.json();
+  const characters = data[0].name;
+  const photo = data[0].photoUrl;
 
-  return { name, photo };
+
+  return { characters, photo };
 }
