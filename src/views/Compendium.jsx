@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { avatarApiFetch } from '../services/fetch-utils';
-import CharacterCard from '../components/CharacterCard';
 
 export default function Compendium() {
   const [characters, setCharacters] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [results, setResults] = useState([]);
 
@@ -30,23 +30,29 @@ export default function Compendium() {
     }
 
     getCharacters();
+    setLoading(false);
   }, [])
 
   return (
     <>
       <h1>Characters from Avatar!</h1>
-      <>
-        <input placeholder='Find a Character' value={search} onChange={handleSearch} />
-      </>
-      <div>
-        {characterList.map((character) => {
-          return (
-            <div key={character.id}>
-            <CharacterCard name={character.name} photo={character.photoUrl} />
-            </div>
-          )
-        })}
-      </div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+      <><>
+            <input placeholder='Find a Character' value={search} onChange={handleSearch} />
+          </><div>
+              {characterList.map((character) => {
+                return (
+                  <div>
+                    <h3>{character.name}</h3>
+                    <img src={character.photo} />
+                  </div>
+                );
+              })}
+            </div></> 
+      )}
+      {noResults && <p>No results found ):</p>}
     </>
   )
 }

@@ -5,5 +5,5 @@ export async function avatarApiFetch() {
   const photo = data[0].photoUrl;
 
 
-  return { characters, photo };
+  return `${characters} ${photo}`;
 }
