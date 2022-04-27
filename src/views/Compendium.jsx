@@ -26,12 +26,11 @@ export default function Compendium() {
   useEffect(() => {
     const getCharacters = async () => {
       const characterList = await pokemonApiFetch();
-      console.log(characterList);
       setCharacters(characterList);
+      setLoading(false);
     }
 
     getCharacters();
-    setLoading(false);
   }, [])
 
   return (
