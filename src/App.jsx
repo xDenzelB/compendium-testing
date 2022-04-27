@@ -1,4 +1,4 @@
-import Compendium from "./views/compendium";
+import Compendium from "./views/Compendium";
 
 export default function App() {
 
