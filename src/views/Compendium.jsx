@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { pokemonApiFetch } from '../services/fetch-utils';
 
+
 export default function Compendium() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,7 +47,7 @@ export default function Compendium() {
                 return (
                   <div>
                     <h3>{character.name}</h3>
-                    <img src={character.img} />
+                    <img src={character.img} alt='My Pokemon' />
                   </div>
                 );
               })}
