@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { avatarApiFetch } from '../services/fetch-utils';
+import { pokemonApiFetch } from '../services/fetch-utils';
 
 export default function Compendium() {
   const [characters, setCharacters] = useState([]);
@@ -24,7 +24,7 @@ export default function Compendium() {
 
   useEffect(() => {
     const getCharacters = async () => {
-      const characterList = await avatarApiFetch();
+      const characterList = await pokemonApiFetch();
       console.log(characterList);
       setCharacters(characterList);
     }
@@ -35,7 +35,7 @@ export default function Compendium() {
 
   return (
     <>
-      <h1>Characters from Avatar!</h1>
+      <h1>Characters from Pokemon!</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -46,7 +46,7 @@ export default function Compendium() {
                 return (
                   <div>
                     <h3>{character.name}</h3>
-                    <img src={character.photo} />
+                    <img src={character.img} />
                   </div>
                 );
               })}
