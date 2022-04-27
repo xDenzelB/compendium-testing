@@ -41,16 +41,16 @@ export default function Compendium() {
       ) : (
       <><>
             <input placeholder='Find a Character' value={search} onChange={handleSearch} />
-          </><div>
+          </><ul>
               {characterList.map((character) => {
                 return (
-                  <div>
+                  <li>
                     <h3>{character.name}</h3>
                     <img src={character.img} alt='My Pokemon' />
-                  </div>
+                  </li>
                 );
               })}
-            </div></> 
+            </ul></> 
       )}
       {noResults && <p>No results found ):</p>}
     </>
