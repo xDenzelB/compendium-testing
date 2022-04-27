@@ -1,6 +1,6 @@
 import { render, screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
 // import { MemoryRouter } from 'react-router-dom';
-import Compendium from './views/compendium';
+import Compendium from './views/Compendium';
 import userEvent from '@testing-library/user-event';
 
 
